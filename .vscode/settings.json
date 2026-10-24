@@ -1,0 +1,15 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+  "python.testing.unittestEnabled": true,
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestArgs": [
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "search.exclude": {
+    "workspace": true,
+    "artifacts": true
+  }
+}

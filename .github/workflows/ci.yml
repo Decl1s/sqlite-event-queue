@@ -1,0 +1,33 @@
+name: Проверки очереди событий
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    env:
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Показать фактические версии
+        run: python -c "import sys,sqlite3; print(sys.version); print(sqlite3.sqlite_version)"
+      - name: Проверить SQLite, конкуренцию и реальную аварию
+        run: python -m unittest discover -s tests -v
+      - name: Проверить полный CLI и восстановление DLQ
+        run: python scripts/smoke.py
+      - name: Собрать только разрешённые исходники
+        run: python scripts/package_release.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sqlite-event-queue-${{ matrix.os }}
+          path: artifacts/

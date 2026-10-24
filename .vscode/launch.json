@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Состояние demo: точка остановки в snapshot",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "event_queue",
+      "args": [
+        "--db",
+        "workspace/demo/queue.sqlite3",
+        "status"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}
