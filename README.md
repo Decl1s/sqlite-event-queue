@@ -8,6 +8,10 @@ DLQ и атомарные результат + ACK. Все примеры син
 Начни с [карты кода](START_HERE.md), [конспекта](NOTES.md),
 [решений](DECISIONS.md) и [пяти заданий](EXERCISES.md).
 
+[Публичный репозиторий](https://github.com/Decl1s/sqlite-event-queue) ·
+[Проверки Linux и Windows](https://github.com/Decl1s/sqlite-event-queue/actions) ·
+[Архив релиза v0.1.0 и SHA256SUMS](https://github.com/Decl1s/sqlite-event-queue/releases/tag/v0.1.0).
+
 ## Запуск за пять минут
 
 Команды выполняются в корне отдельного проекта. Нужен Python 3.12 со SQLite >=3.37.
